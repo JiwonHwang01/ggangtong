@@ -31,7 +31,7 @@ jobs:
           docker buildx build \
             --platform linux/amd64 \
             --push \
-            -t ghcr.io/${{ OWNER_LC }}/ggangtong:latest .
+            -t ghcr.io/${{ env.OWNER_LC }}/ggangtong:latest .
 
   deploy:
     needs: [build-and-push]
