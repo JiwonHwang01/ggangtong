@@ -46,7 +46,7 @@ jobs:
         run: |
           echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
         env:
-          OWNER: '${{ env.OWNER_LC }}'
+          OWNER: '${{ github.repository_owner }}'
 
       - name: SSH into EC2 and pull/run container
         run: |
