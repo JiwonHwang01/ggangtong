@@ -42,6 +42,12 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" | base64 --decode > key.pem
           chmod 600 key.pem
 
+      - name: set lower case owner name
+        run: |
+          echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+        env:
+          OWNER: '${{ env.OWNER_LC }}'
+
       - name: SSH into EC2 and pull/run container
         run: |
           # 환경변수 준비 (secrets에 해당 값들을 넣어두어야 값이 똑바로 읽어와진다!)
